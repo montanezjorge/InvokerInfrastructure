@@ -2,7 +2,7 @@
 Pedagogical C# framework for building programs using a functional paradigm approach.  
 It provides a way of bulding a program as a tree of tasks. 
 
-As an example, what follows is the specifycation of the encrypt operation of the AES algorithm in this framework:
+As an example, what follows is the specification of the encrypt operation of the AES algorithm in this framework:
 
 ```
 var encryptionConfiguration =
