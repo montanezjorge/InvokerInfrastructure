@@ -1,5 +1,5 @@
 # InvokerInfrastructure
-Pedagogical framework, akin to functional programming in C#.  
+Pedagogical C# framework, akin to functional programming.  
 It provides a way of bulding a program as a tree of tasks. 
 
 As an example, what follows is the specification of the encrypt operation of the AES algorithm in this framework:
