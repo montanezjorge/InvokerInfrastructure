@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdvancedEncryptionStandard.Invoker\AdvancedEncryptionStandard.Invoker.csproj" />
+    <ProjectReference Include="..\Invoker.Infrastructure.BareBonesContainer\Invoker.Infrastructure.BareBonesContainer.csproj" />
     <ProjectReference Include="..\Invoker.Infrastructure.Unity\Invoker.Infrastructure.Unity.csproj" />
   </ItemGroup>
 

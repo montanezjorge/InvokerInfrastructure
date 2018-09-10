@@ -72,9 +72,7 @@
 
             var result = await Task.WhenAll(tasks);
 
-            var task = result.FirstOrDefault(x => (x as ITask)?.AsTask()?.IsFaulted == true) as ITask;
-
-            if (task != null)
+            if (result.FirstOrDefault(x => (x as ITask)?.AsTask()?.IsFaulted == true) is ITask task)
             {
                 throw task.AsTask().Exception;
             }

@@ -1,5 +1,6 @@
 ﻿using AdvancedEncryptionStandard.Invoker.InvokerMembers;
 using Invoker.Infrastructure;
+using Invoker.Infrastructure.BareBonesContainer;
 using Invoker.Infrastructure.Extensions;
 using Invoker.Infrastructure.Unity;
 using Microsoft.Practices.Unity;
@@ -15,8 +16,9 @@ namespace AdvancedEncryptionStandard.Invoker
 
         static AES()
         {
-            var underlyingContainer = new UnityContainer();
-            Container = new UnityContainerWrapper(underlyingContainer);
+            //var underlyingContainer = new UnityContainer();
+            //Container = new UnityContainerWrapper(underlyingContainer);
+            Container = new Container();
             RegisterAESImplementation(Container);
         }
 
@@ -44,12 +46,12 @@ namespace AdvancedEncryptionStandard.Invoker
                 new InvokerElement<Initializer>("Initializer")
                     .Invokes<BlockLoop>("BlockLoop")
                         .Invokes<CipherBlockChaining>("CBC")
-                            .Invokes(
+                            .InvokesMultiple(
                                 new InvokerElement<InputBlockToStateMatrix>("StateMapper"),
                                 new InvokerElement<CopyKeyIntoKeySchedule>("KeyScheduleInit"),
                                 new InvokerElement<ComputeKeyScheduleConditional>("KeyScheduleLoop")
-                                        .Invokes(new InvokerElement<ComputeKeyScheduleLogic>("KeyScheduleLogic")
-                                            .Invokes(
+                                        .InvokesMultiple(new InvokerElement<ComputeKeyScheduleLogic>("KeyScheduleLogic")
+                                            .InvokesMultiple(
                                                 new InvokerElement<IsEven>("KeyScheduleConditional")
                                                     .Invokes<RotateWord>("RotateWord")
                                                     .Invokes<SubWord>("SubWord1")
@@ -59,7 +61,7 @@ namespace AdvancedEncryptionStandard.Invoker
                                                 new InvokerElement<XOrWithPrevious>("KeyScheduleComplete"))),
                                 new InvokerElement<AddRoundKey>("RoundKey1"),
                                 new InvokerElement<RoundConditional>("RoundConditional")
-                                        .Invokes(
+                                        .InvokesMultiple(
                                             new InvokerElement<SubBytes>("SubBytes"),
                                             new InvokerElement<ShiftRows>("ShiftRows"),
                                             new InvokerElement<IfNotLastRound>("IfNotLastRound").Invokes<MixColumns>("MixColumns"),

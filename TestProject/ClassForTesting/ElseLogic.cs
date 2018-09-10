@@ -8,7 +8,7 @@
     {
         protected override async Task<Dto> Invoke(Dto param)
         {
-            Console.WriteLine(param.Input[0]);
+            Console.Write(param.Input[0]);
             param.Input = param.Input.Substring(1);
 
             return param;

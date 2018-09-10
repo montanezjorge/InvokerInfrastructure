@@ -18,7 +18,7 @@
             return child;
         }
 
-        public static IInvokerConfigElement<object> Invokes(this IInvokerConfigElement<object> invokerConfiguration, params IInvokerConfigElement<object>[] children)
+        public static IInvokerConfigElement<object> InvokesMultiple(this IInvokerConfigElement<object> invokerConfiguration, params IInvokerConfigElement<object>[] children)
         {
             var parentList = children.Select(leaf =>
             {

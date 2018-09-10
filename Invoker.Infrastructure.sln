@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvancedEncryptionStandard.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Invoker.Infrastructure.Unity", "Invoker.Infrastructure.Unity\Invoker.Infrastructure.Unity.csproj", "{ED7B2AC2-C5BD-4030-97B9-1D8CDA60B3D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoker.Infrastructure.BareBonesContainer", "Invoker.Infrastructure.BareBonesContainer\Invoker.Infrastructure.BareBonesContainer.csproj", "{568D7847-7C43-416C-B3AC-E67EBE2FDD6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{ED7B2AC2-C5BD-4030-97B9-1D8CDA60B3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED7B2AC2-C5BD-4030-97B9-1D8CDA60B3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED7B2AC2-C5BD-4030-97B9-1D8CDA60B3D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568D7847-7C43-416C-B3AC-E67EBE2FDD6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568D7847-7C43-416C-B3AC-E67EBE2FDD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568D7847-7C43-416C-B3AC-E67EBE2FDD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568D7847-7C43-416C-B3AC-E67EBE2FDD6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
