@@ -2,33 +2,30 @@
 using Invoker.Infrastructure;
 using Invoker.Infrastructure.BareBonesContainer;
 using Invoker.Infrastructure.Extensions;
-using Invoker.Infrastructure.Unity;
-using Microsoft.Practices.Unity;
 using System.Threading.Tasks;
+using MorseCode.ITask;
 
 namespace AdvancedEncryptionStandard.Invoker
 {
     public class AES
     {
-        private CryptoTransform transform;
+        private IInvoker<(byte[] plaintext, byte[] iv, byte[] key), byte[]> transform;
 
         private static readonly IContainer Container;
 
         static AES()
         {
-            //var underlyingContainer = new UnityContainer();
-            //Container = new UnityContainerWrapper(underlyingContainer);
             Container = new Container();
             RegisterAESImplementation(Container);
         }
 
-        public CryptoTransform Transform
+        private IInvoker<(byte[] plaintext, byte[] iv, byte[] key), byte[]> Transform
         {
             get
             {
                 if (transform == null)
                 {
-                    transform = Container.Resolve<CryptoTransform>();
+                    transform = Container.Resolve<IInvoker<(byte[] plaintext, byte[] iv, byte[] key), byte[]>>();
                 }
 
                 return transform;
@@ -37,7 +34,7 @@ namespace AdvancedEncryptionStandard.Invoker
 
         public async Task<byte[]> EncryptAsync(byte[] plaintext, byte[] iv, byte[] key)
         {
-            return await Transform.EncryptAsync(plaintext, iv, key);
+            return await Transform.Invoke(Task.FromResult((plaintext, iv, key)).AsITask());
         }
 
         private static void RegisterAESImplementation(IContainer container)
